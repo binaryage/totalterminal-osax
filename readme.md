@@ -1,51 +1,48 @@
-# TotalFinder.osax
+# TotalTerminal.osax
 
-This source code implements scripting additions used by [TotalFinder](http://totalfinder.binaryage.com).
+This source code implements scripting additions used by [TotalTerminal](http://totalterminal.binaryage.com).
 
-**TotalFinder** is a plugin for Apples's Finder.app which brings tabs, dual panels and more!
+**TotalTerminal** is a plugin for Apple's Terminal.app which brings Visor (famous Quake console) and more!
 
-<a href="http://totalfinder.binaryage.com"><img src="http://totalfinder.binaryage.com/shared/img/totalfinder-mainshot.png"></a>
+<!-- <a href="http://totalterminal.binaryage.com"><img src="http://totalterminal.binaryage.com/shared/img/totalterminal-mainshot.png"></a> -->
 
-### Visit [totalfinder.binaryage.com](http://totalfinder.binaryage.com)
+### Visit [totalterminal.binaryage.com](http://totalterminal.binaryage.com)
 
 ## Is this a replacement for SIMBL?
 
-Yes, this is SIMBL-lite tailored specifically for TotalFinder.
+Yes, this is SIMBL-lite tailored specifically for TotalTerminal.
 
-You may want to read the article about my motivations:
-[http://blog.binaryage.com/totalfinder-without-simbl](http://blog.binaryage.com/totalfinder-without-simbl)
+## TotalTerminal configuration file
 
-## TotalFinder configuration file
+In special case you may want to create ini file to override TotalTerminal configuration. Currently it is useful in case you install TotalTerminal.app elsewhere than into /Applications/TotalTerminal.app
 
-In special case you may want to create ini file to override TotalFinder configuration. Currently it is useful in case you install TotalFinder.app elsewhere than into /Applications/TotalFinder.app
+config file ~/.totalterminal may look like this:
 
-config file ~/.totalfinder may look like this:
+    location = ~/Applications/TotalTerminal.app
 
-    location = ~/Applications/TotalFinder.app
+## BATTinit event
 
-## BATFinit event
+Installs TotalTerminal.bundle into running Terminal.app (/Applications/TotalTerminal.app is just a wrapper app for this script)
 
-Installs TotalFinder.bundle into running Finder.app (/Applications/TotalFinder.app is just a wrapper app for this script)
-
-    tell application "Finder"
-        -- give Finder some time to launch if it wasn't running (rare case)
+    tell application "Terminal"
+        -- give Terminal some time to launch if it wasn't running (rare case)
         delay 1 -- this delay is important to prevent random "Connection is Invalid -609" AppleScript errors 
         try
-            «event BATFinit»
+            «event BATTinit»
         on error msg number num
-            display dialog "Unable to launch TotalFinder." & msg & " (" & (num as text) & ")"
+            display dialog "Unable to launch TotalTerminal." & msg & " (" & (num as text) & ")"
         end try
     end tell
 
-## BATFchck event
+## BATTchck event
 
-Check if TotalFinder is present in running Finder image.
+Check if TotalTerminal is present in running Terminal image.
 
-    tell application "Finder"
-        -- give Finder some time to launch if it wasn't running (rare case)
+    tell application "Terminal"
+        -- give Terminal some time to launch if it wasn't running (rare case)
         delay 1 -- this delay is important to prevent random "Connection is Invalid -609" AppleScript errors 
         try
-            «event BATFchck»
+            «event BATTchck»
             set res to "present"
         on error msg number num
             set res to "not present"
