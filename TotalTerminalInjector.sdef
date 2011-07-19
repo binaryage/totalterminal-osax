@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<dictionary title="TotalTerminalInjector Terminology">
+    <suite name="TotalTerminalInjector Suite" code="BATT" description="TotalTerminal Injector commands">
+        <command name="init TotalTerminal" code="BATTinit" description="Install TotalTerminal.bundle into the Terminal process"/>
+        <command name="check TotalTerminal" code="BATTchck" description="Check presence of TotalTerminal in Terminal process"/>
+    </suite>
+</dictionary>

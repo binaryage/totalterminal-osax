@@ -9,22 +9,22 @@
 /* Begin PBXBuildFile section */
 		8D576314048677EA00EA77CD /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA1909FFE8422F4C02AAC07 /* CoreFoundation.framework */; };
 		8D5B49A804867FD3000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B49A704867FD3000E48DA /* InfoPlist.strings */; };
-		D6ACBEA2117B7D5600F6691C /* TotalFinderInjector.m in Sources */ = {isa = PBXBuildFile; fileRef = D6ACBE9E117B7D5600F6691C /* TotalFinderInjector.m */; };
+		D6ACBEA2117B7D5600F6691C /* TotalTerminalInjector.m in Sources */ = {isa = PBXBuildFile; fileRef = D6ACBE9E117B7D5600F6691C /* TotalTerminalInjector.m */; };
 		D6ACBEA3117B7D5600F6691C /* TFStandardVersionComparator.m in Sources */ = {isa = PBXBuildFile; fileRef = D6ACBEA0117B7D5600F6691C /* TFStandardVersionComparator.m */; };
-		D6ACBEA5117B7D6100F6691C /* TotalFinderInjector.sdef in Resources */ = {isa = PBXBuildFile; fileRef = D6ACBEA4117B7D6100F6691C /* TotalFinderInjector.sdef */; };
+		D6ACBEA5117B7D6100F6691C /* TotalTerminalInjector.sdef in Resources */ = {isa = PBXBuildFile; fileRef = D6ACBEA4117B7D6100F6691C /* TotalTerminalInjector.sdef */; };
 		D6E8457113A6748200D2D64A /* ini.c in Sources */ = {isa = PBXBuildFile; fileRef = D6E8456F13A6748200D2D64A /* ini.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0AA1909FFE8422F4C02AAC07 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
-		8D576316048677EA00EA77CD /* TotalFinder.osax */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TotalFinder.osax; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D576316048677EA00EA77CD /* TotalTerminal.osax */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TotalTerminal.osax; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D576317048677EA00EA77CD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D6ACBE9E117B7D5600F6691C /* TotalFinderInjector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalFinderInjector.m; sourceTree = "<group>"; };
+		D6ACBE9E117B7D5600F6691C /* TotalTerminalInjector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalTerminalInjector.m; sourceTree = "<group>"; };
 		D6ACBE9F117B7D5600F6691C /* TFVersionComparisonProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFVersionComparisonProtocol.h; sourceTree = "<group>"; };
 		D6ACBEA0117B7D5600F6691C /* TFStandardVersionComparator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFStandardVersionComparator.m; sourceTree = "<group>"; };
 		D6ACBEA1117B7D5600F6691C /* TFStandardVersionComparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFStandardVersionComparator.h; sourceTree = "<group>"; };
-		D6ACBEA4117B7D6100F6691C /* TotalFinderInjector.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TotalFinderInjector.sdef; sourceTree = "<group>"; };
+		D6ACBEA4117B7D6100F6691C /* TotalTerminalInjector.sdef */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TotalTerminalInjector.sdef; sourceTree = "<group>"; };
 		D6E8456F13A6748200D2D64A /* ini.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ini.c; path = ini/ini.c; sourceTree = "<group>"; };
 		D6E8457013A6748200D2D64A /* ini.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ini.h; path = ini/ini.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,7 +41,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		089C166AFE841209C02AAC07 /* TotalFinder-osax */ = {
+		089C166AFE841209C02AAC07 /* TotalTerminal-osax */ = {
 			isa = PBXGroup;
 			children = (
 				08FB77AFFE84173DC02AAC07 /* Source */,
@@ -49,7 +49,7 @@
 				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
 				19C28FB6FE9D52B211CA2CBB /* Products */,
 			);
-			name = "TotalFinder-osax";
+			name = "TotalTerminal-osax";
 			sourceTree = "<group>";
 		};
 		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
@@ -63,7 +63,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D6ACBEA4117B7D6100F6691C /* TotalFinderInjector.sdef */,
+				D6ACBEA4117B7D6100F6691C /* TotalTerminalInjector.sdef */,
 				8D576317048677EA00EA77CD /* Info.plist */,
 				8D5B49A704867FD3000E48DA /* InfoPlist.strings */,
 			);
@@ -74,7 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				D6E8456E13A672DF00D2D64A /* ini */,
-				D6ACBE9E117B7D5600F6691C /* TotalFinderInjector.m */,
+				D6ACBE9E117B7D5600F6691C /* TotalTerminalInjector.m */,
 				D6ACBE9F117B7D5600F6691C /* TFVersionComparisonProtocol.h */,
 				D6ACBEA0117B7D5600F6691C /* TFStandardVersionComparator.m */,
 				D6ACBEA1117B7D5600F6691C /* TFStandardVersionComparator.h */,
@@ -85,7 +85,7 @@
 		19C28FB6FE9D52B211CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D576316048677EA00EA77CD /* TotalFinder.osax */,
+				8D576316048677EA00EA77CD /* TotalTerminal.osax */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,9 +102,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D57630D048677EA00EA77CD /* TotalFinder.osax */ = {
+		8D57630D048677EA00EA77CD /* TotalTerminal.osax */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB911A08733D790010E9CD /* Build configuration list for PBXNativeTarget "TotalFinder.osax" */;
+			buildConfigurationList = 1DEB911A08733D790010E9CD /* Build configuration list for PBXNativeTarget "TotalTerminal.osax" */;
 			buildPhases = (
 				8D57630F048677EA00EA77CD /* Resources */,
 				8D576311048677EA00EA77CD /* Sources */,
@@ -115,10 +115,10 @@
 			);
 			dependencies = (
 			);
-			name = TotalFinder.osax;
+			name = TotalTerminal.osax;
 			productInstallPath = "$(HOME)/Library/Bundles";
-			productName = "TotalFinder-osax";
-			productReference = 8D576316048677EA00EA77CD /* TotalFinder.osax */;
+			productName = "TotalTerminal-osax";
+			productReference = 8D576316048677EA00EA77CD /* TotalTerminal.osax */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -131,18 +131,18 @@
 				LastUpgradeCheck = 0410;
 				ORGANIZATIONNAME = BinaryAge;
 			};
-			buildConfigurationList = 1DEB911E08733D790010E9CD /* Build configuration list for PBXProject "TotalFinder-osax" */;
+			buildConfigurationList = 1DEB911E08733D790010E9CD /* Build configuration list for PBXProject "TotalTerminal-osax" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 089C166AFE841209C02AAC07 /* TotalFinder-osax */;
+			mainGroup = 089C166AFE841209C02AAC07 /* TotalTerminal-osax */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D57630D048677EA00EA77CD /* TotalFinder.osax */,
+				8D57630D048677EA00EA77CD /* TotalTerminal.osax */,
 			);
 		};
 /* End PBXProject section */
@@ -153,7 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D5B49A804867FD3000E48DA /* InfoPlist.strings in Resources */,
-				D6ACBEA5117B7D6100F6691C /* TotalFinderInjector.sdef in Resources */,
+				D6ACBEA5117B7D6100F6691C /* TotalTerminalInjector.sdef in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,7 +172,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "BIN=\"$PROJECT_DIR/bin\"\n\nrm -rf \"$BIN/TotalFinder.osax\"\nmkdir -p \"$BIN/TotalFinder.osax\"\ncp -r \"$BUILT_PRODUCTS_DIR/TotalFinder.osax\" \"$BIN\"";
+			shellScript = "BIN=\"$PROJECT_DIR/bin\"\n\nrm -rf \"$BIN/TotalTerminal.osax\"\nmkdir -p \"$BIN/TotalTerminal.osax\"\ncp -r \"$BUILT_PRODUCTS_DIR/TotalTerminal.osax\" \"$BIN\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -181,7 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6ACBEA2117B7D5600F6691C /* TotalFinderInjector.m in Sources */,
+				D6ACBEA2117B7D5600F6691C /* TotalTerminalInjector.m in Sources */,
 				D6ACBEA3117B7D5600F6691C /* TFStandardVersionComparator.m in Sources */,
 				D6E8457113A6748200D2D64A /* ini.c in Sources */,
 			);
@@ -216,7 +216,7 @@
 					"-framework",
 					AppKit,
 				);
-				PRODUCT_NAME = TotalFinder;
+				PRODUCT_NAME = TotalTerminal;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = osax;
 			};
@@ -234,7 +234,7 @@
 					"-framework",
 					AppKit,
 				);
-				PRODUCT_NAME = TotalFinder;
+				PRODUCT_NAME = TotalTerminal;
 				WRAPPER_EXTENSION = osax;
 				ZERO_LINK = NO;
 			};
@@ -279,7 +279,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB911A08733D790010E9CD /* Build configuration list for PBXNativeTarget "TotalFinder.osax" */ = {
+		1DEB911A08733D790010E9CD /* Build configuration list for PBXNativeTarget "TotalTerminal.osax" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB911B08733D790010E9CD /* Debug */,
@@ -288,7 +288,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1DEB911E08733D790010E9CD /* Build configuration list for PBXProject "TotalFinder-osax" */ = {
+		1DEB911E08733D790010E9CD /* Build configuration list for PBXProject "TotalTerminal-osax" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB911F08733D790010E9CD /* Debug */,
