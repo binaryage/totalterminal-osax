@@ -59,18 +59,18 @@ OSErr HandleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refcon) {
     @try {
         NSBundle* terminalBundle = [NSBundle mainBundle];
         if (!terminalBundle) {
-            reportError(reply, [NSString stringWithFormat:@"Unable to locate main Finder bundle!"]);
+            reportError(reply, [NSString stringWithFormat:@"Unable to locate main Terminal bundle!"]);
             return 4;
         }
         
         NSString* terminalVersion = [terminalBundle objectForInfoDictionaryKey:@"CFBundleVersion"];
         if (!terminalVersion) {
-            reportError(reply, [NSString stringWithFormat:@"Unable to determine Finder version!"]);
+            reportError(reply, [NSString stringWithFormat:@"Unable to determine Terminal version!"]);
             return 5;
         }
         
         // future compatibility check
-        NSString* supressKey = @"TotalTerminalSuppressFinderVersionCheck";
+        NSString* supressKey = @"TotalTerminalSuppressTerminalVersionCheck";
         NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
         if (![defaults boolForKey:supressKey]) {
             TFStandardVersionComparator* comparator = [TFStandardVersionComparator defaultComparator];
@@ -78,8 +78,8 @@ OSErr HandleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refcon) {
                 ([comparator compareVersion:terminalVersion toVersion:TERMINAL_MIN_TESTED_VERSION]==NSOrderedAscending)) {
 
                 NSAlert* alert = [NSAlert new];
-                [alert setMessageText: [NSString stringWithFormat:@"You have Finder version %@", terminalVersion]];
-                [alert setInformativeText: [NSString stringWithFormat:@"But TotalTerminal was properly tested only with Finder versions in range %@ - %@\n\nYou have probably updated your system and Finder version got bumped by Apple developers.\n\nYou may expect a new TotalTerminal release soon.", TERMINAL_MIN_TESTED_VERSION, TERMINAL_MAX_TESTED_VERSION]];
+                [alert setMessageText: [NSString stringWithFormat:@"You have Terminal version %@", terminalVersion]];
+                [alert setInformativeText: [NSString stringWithFormat:@"But TotalTerminal was properly tested only with Terminal versions in range %@ - %@\n\nYou have probably updated your system and Terminal version got bumped by Apple developers.\n\nYou may expect a new TotalTerminal release soon.", TERMINAL_MIN_TESTED_VERSION, TERMINAL_MAX_TESTED_VERSION]];
                 [alert setShowsSuppressionButton:YES];
                 [alert addButtonWithTitle:@"Launch TotalTerminal anyway"];
                 [alert addButtonWithTitle:@"Cancel"];
@@ -95,22 +95,22 @@ OSErr HandleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refcon) {
         
         // read install location from ini file if present, otherwise use standard install location
         configuration config;
-        NSString* totalFinderLocation = @TOTALTERMINAL_STANDARD_INSTALL_LOCATION;
+        NSString* totalTerminalLocation = @TOTALTERMINAL_STANDARD_INSTALL_LOCATION;
         NSString* iniPath = [@TOTALTERMINAL_INI_FILE stringByExpandingTildeInPath];
         if (ini_parse([iniPath cStringUsingEncoding:NSASCIIStringEncoding], ini_handler, &config) >= 0) {
-            totalFinderLocation = [config.location stringByStandardizingPath];
+            totalTerminalLocation = [config.location stringByStandardizingPath];
             [config.location release];
         }
         
-        NSBundle* pluginBundle = [NSBundle bundleWithPath:[totalFinderLocation stringByAppendingPathComponent:@"Contents/Resources/TotalTerminal.bundle"]];
+        NSBundle* pluginBundle = [NSBundle bundleWithPath:[totalTerminalLocation stringByAppendingPathComponent:@"Contents/Resources/TotalTerminal.bundle"]];
         if (!pluginBundle) {
-            reportError(reply, [NSString stringWithFormat:@"Unable to create bundle from path: %@", totalFinderLocation]);
+            reportError(reply, [NSString stringWithFormat:@"Unable to create bundle from path: %@", totalTerminalLocation]);
             return 2;
         }
         
         NSError* error;
         if (![pluginBundle loadAndReturnError:&error]) {
-            reportError(reply, [NSString stringWithFormat:@"Unable to load bundle from path: %@ error: %@", totalFinderLocation, [error localizedDescription]]);
+            reportError(reply, [NSString stringWithFormat:@"Unable to load bundle from path: %@ error: %@", totalTerminalLocation, [error localizedDescription]]);
             return 6;
         }
         
