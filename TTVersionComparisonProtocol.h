@@ -1,19 +1,19 @@
 //
-//  TFVersionComparisonProtocol.h
+//  TTVersionComparisonProtocol.h
 //  Sparkle
 //
 //  Created by Andy Matuschak on 12/21/07.
 //  Copyright 2007 Andy Matuschak. All rights reserved.
 //
 
-#ifndef TFVERSIONCOMPARISONPROTOCOL_H
-#define TFVERSIONCOMPARISONPROTOCOL_H
+#ifndef TTVERSIONCOMPARISONPROTOCOL_H
+#define TTVERSIONCOMPARISONPROTOCOL_H
 
 /*!
     @protocol
     @abstract    Implement this protocol to provide version comparison facilities for Sparkle.
 */
-@protocol TFVersionComparison
+@protocol TTVersionComparison
 
 /*!
     @method     

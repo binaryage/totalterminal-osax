@@ -1,6 +1,6 @@
 #import <Cocoa/Cocoa.h>
 
-#import "TFStandardVersionComparator.h"
+#import "TTStandardVersionComparator.h"
 
 #define TOTALTERMINAL_STANDARD_INSTALL_LOCATION "/Applications/TotalTerminal.app"
 #define TERMINAL_MIN_TESTED_VERSION @"0"
@@ -67,7 +67,7 @@ OSErr handleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refcon) {
         NSString* supressKey = @"TotalTerminalSuppressTerminalVersionCheck";
         NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
         if (![defaults boolForKey:supressKey]) {
-            TFStandardVersionComparator* comparator = [TFStandardVersionComparator defaultComparator];
+            TTStandardVersionComparator* comparator = [TTStandardVersionComparator defaultComparator];
             if (([comparator compareVersion:terminalVersion toVersion:TERMINAL_MAX_TESTED_VERSION]==NSOrderedDescending) || 
                 ([comparator compareVersion:terminalVersion toVersion:TERMINAL_MIN_TESTED_VERSION]==NSOrderedAscending)) {
 
