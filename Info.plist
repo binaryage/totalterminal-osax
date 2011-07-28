@@ -31,7 +31,7 @@
 				<key>Context</key>
 				<string>Process</string>
 				<key>Handler</key>
-				<string>HandleCheckEvent</string>
+				<string>handleCheckEvent</string>
 				<key>ThreadSafe</key>
 				<false/>
 			</dict>
@@ -40,7 +40,7 @@
 				<key>Context</key>
 				<string>Process</string>
 				<key>Handler</key>
-				<string>HandleInitEvent</string>
+				<string>handleInitEvent</string>
 				<key>ThreadSafe</key>
 				<false/>
 			</dict>

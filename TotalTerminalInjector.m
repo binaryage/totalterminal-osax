@@ -44,7 +44,7 @@ static void reportError(AppleEvent *reply, NSString* msg) {
     AEPutParamString(reply, keyErrorString, msg);
 }
 
-OSErr HandleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refcon) {
+OSErr handleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refcon) {
     NSLog(@"TotalTerminalInjector: Received init event");
     if (alreadyLoaded) {
         NSLog(@"TotalTerminalInjector: TotalTerminal has been already loaded. Ignoring this request.");
@@ -117,7 +117,7 @@ OSErr HandleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refcon) {
     return 1;
 }
 
-OSErr HandleCheckEvent(const AppleEvent *ev, AppleEvent *reply, long refcon) {
+OSErr handleCheckEvent(const AppleEvent *ev, AppleEvent *reply, long refcon) {
     if (alreadyLoaded) {
         return noErr;
     }
