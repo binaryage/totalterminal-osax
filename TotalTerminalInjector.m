@@ -1,10 +1,8 @@
 #import <Cocoa/Cocoa.h>
 
 #import "TFStandardVersionComparator.h"
-#import "ini.h"
 
 #define TOTALTERMINAL_STANDARD_INSTALL_LOCATION "/Applications/TotalTerminal.app"
-#define TOTALTERMINAL_INI_FILE "~/.totalterminal"
 #define TERMINAL_MIN_TESTED_VERSION @"0"
 #define TERMINAL_MAX_TESTED_VERSION @"297"
 
@@ -14,11 +12,16 @@
 - (void) install;
 @end
 
-static bool alreadyLoaded = false;
+// just a dummy class for locating our bundle
+@interface TotalTerminalInjector: NSObject { 
+}
+@end
 
-typedef struct {
-    NSString* location;
-} configuration;
+@implementation TotalTerminalInjector {
+}
+@end
+
+static bool alreadyLoaded = false;
 
 OSErr AEPutParamString(AppleEvent *event, AEKeyword keyword, NSString* string) {
     UInt8 *textBuf;
@@ -34,15 +37,6 @@ OSErr AEPutParamString(AppleEvent *event, AEKeyword keyword, NSString* string) {
     } else {
         return memFullErr;
     }
-}
-
-static int ini_handler(void* user, const char* section, const char* name, const char* value) {
-    configuration* config = (configuration*)user;
-    
-    if ([[NSString stringWithUTF8String:name] isEqualToString:@"location"]) {
-        config->location = [[NSString alloc] initWithUTF8String:value];
-    }
-    return 0;
 }
 
 static void reportError(AppleEvent *reply, NSString* msg) {
@@ -93,16 +87,8 @@ OSErr HandleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refcon) {
             }
         }
         
-        // read install location from ini file if present, otherwise use standard install location
-        configuration config;
-        NSString* totalTerminalLocation = @TOTALTERMINAL_STANDARD_INSTALL_LOCATION;
-        NSString* iniPath = [@TOTALTERMINAL_INI_FILE stringByExpandingTildeInPath];
-        if (ini_parse([iniPath cStringUsingEncoding:NSASCIIStringEncoding], ini_handler, &config) >= 0) {
-            totalTerminalLocation = [config.location stringByStandardizingPath];
-            [config.location release];
-        }
-        
-        NSBundle* pluginBundle = [NSBundle bundleWithPath:[totalTerminalLocation stringByAppendingPathComponent:@"Contents/Resources/TotalTerminal.bundle"]];
+        NSString* totalTerminalLocation = [[NSBundle bundleForClass:[TotalTerminalInjector class]] pathForResource:@"TotalTerminal" ofType:@"bundle"];
+        NSBundle* pluginBundle = [NSBundle bundleWithPath:totalTerminalLocation];
         if (!pluginBundle) {
             reportError(reply, [NSString stringWithFormat:@"Unable to create bundle from path: %@", totalTerminalLocation]);
             return 2;
