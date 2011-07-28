@@ -12,14 +12,6 @@ This source code implements scripting additions used by [TotalTerminal](http://t
 
 Yes, this is SIMBL-lite tailored specifically for TotalTerminal.
 
-## TotalTerminal configuration file
-
-In special case you may want to create ini file to override TotalTerminal configuration. Currently it is useful in case you install TotalTerminal.app elsewhere than into /Applications/TotalTerminal.app
-
-config file ~/.totalterminal may look like this:
-
-    location = ~/Applications/TotalTerminal.app
-
 ## BATTinit event
 
 Installs TotalTerminal.bundle into running Terminal.app (/Applications/TotalTerminal.app is just a wrapper app for this script)
