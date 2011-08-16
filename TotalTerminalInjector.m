@@ -45,7 +45,14 @@ static void reportError(AppleEvent *reply, NSString* msg) {
 }
 
 OSErr handleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refcon) {
-    NSLog(@"TotalTerminalInjector: Received init event");
+    NSBundle* injectorBundle = [NSBundle bundleForClass:[TotalTerminalInjector class]];
+    NSString* injectorVersion = [injectorBundle objectForInfoDictionaryKey:@"CFBundleVersion"];
+    if (!injectorVersion || ![injectorVersion isKindOfClass:[NSString class]]) {
+        reportError(reply, [NSString stringWithFormat:@"Unable to determine TotalTerminalInjector version!"]);
+        return 7;
+    }
+    
+    NSLog(@"TotalTerminalInjector v%@ received init event", injectorVersion);
     if (alreadyLoaded) {
         NSLog(@"TotalTerminalInjector: TotalTerminal has been already loaded. Ignoring this request.");
         return noErr;
@@ -58,7 +65,7 @@ OSErr handleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refcon) {
         }
         
         NSString* terminalVersion = [terminalBundle objectForInfoDictionaryKey:@"CFBundleVersion"];
-        if (!terminalVersion) {
+        if (!terminalVersion || ![terminalVersion isKindOfClass:[NSString class]]) {
             reportError(reply, [NSString stringWithFormat:@"Unable to determine Terminal version!"]);
             return 5;
         }
