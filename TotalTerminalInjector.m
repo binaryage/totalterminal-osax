@@ -4,7 +4,7 @@
 
 #define TOTALTERMINAL_STANDARD_INSTALL_LOCATION "/Applications/TotalTerminal.app"
 #define TERMINAL_MIN_TESTED_VERSION @"0"
-#define TERMINAL_MAX_TESTED_VERSION @"297"
+#define TERMINAL_MAX_TESTED_VERSION @"299"
 
 // SIMBL-compatible interface
 @interface TotalTerminalPlugin: NSObject { 
