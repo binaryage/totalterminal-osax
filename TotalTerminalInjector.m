@@ -94,10 +94,11 @@ OSErr handleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refcon) {
             }
         }
         
-        NSString* totalTerminalLocation = [[NSBundle bundleForClass:[TotalTerminalInjector class]] pathForResource:@"TotalTerminal" ofType:@"bundle"];
+        NSBundle* totalTerminalInjectorBundle = [NSBundle bundleForClass:[TotalTerminalInjector class]];
+        NSString* totalTerminalLocation = [totalTerminalInjectorBundle pathForResource:@"TotalTerminal" ofType:@"bundle"];
         NSBundle* pluginBundle = [NSBundle bundleWithPath:totalTerminalLocation];
         if (!pluginBundle) {
-            reportError(reply, [NSString stringWithFormat:@"Unable to create bundle from path: %@", totalTerminalLocation]);
+            reportError(reply, [NSString stringWithFormat:@"Unable to create bundle from path: %@ [%@]", totalTerminalLocation, totalTerminalInjectorBundle]);
             return 2;
         }
         
