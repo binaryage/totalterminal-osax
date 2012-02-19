@@ -4,7 +4,7 @@
 
 #define TOTALTERMINAL_STANDARD_INSTALL_LOCATION "/Applications/TotalTerminal.app"
 #define TERMINAL_MIN_TESTED_VERSION @"0"
-#define TERMINAL_MAX_TESTED_VERSION @"303"
+#define TERMINAL_MAX_TESTED_VERSION @"304" // 10.8 Mountain Lion Preview 1
 
 // SIMBL-compatible interface
 @interface TotalTerminalPlugin: NSObject { 
