@@ -10,8 +10,6 @@
 #define TERMINAL_UNSUPPORTED_VERSION @""
 #define TOTALTERMINAL_INJECTED_NOTIFICATION @"TotalTerminalInjectedNotification"
 
-EXPORT OSErr handleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refcon);
-
 static NSString* globalLock = @"I'm the global lock to prevent concruent handler executions";
 static bool alreadyLoaded = false;
 static Class gPrincipalClass = nil;
