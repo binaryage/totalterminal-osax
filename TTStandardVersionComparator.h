@@ -15,22 +15,24 @@
 /*!
     @class
     @abstract    Sparkle's default version comparator.
-	@discussion  This comparator is adapted from MacPAD, by Kevin Ballard. It's "dumb" in that it does essentially string comparison, in components split by character type.
+  @discussion  This comparator is adapted from MacPAD, by Kevin Ballard. It's "dumb" in that it does essentially string comparison, in components split by
+  character type.
 */
-@interface TTStandardVersionComparator : NSObject <TTVersionComparison> { }
+@interface TTStandardVersionComparator : NSObject<TTVersionComparison> {
+}
 
 /*!
     @method
     @abstract   Returns a singleton instance of the comparator.
 */
-+ (TTStandardVersionComparator *)defaultComparator;
++ (TTStandardVersionComparator*)defaultComparator;
 
 /*!
-	@method
-	@abstract	Compares version strings through textual analysis.
-	@discussion	See the implementation for more details.
+  @method
+  @abstract	Compares version strings through textual analysis.
+  @discussion	See the implementation for more details.
 */
-- (NSComparisonResult)compareVersion:(NSString *)versionA toVersion:(NSString *)versionB;
+- (NSComparisonResult)compareVersion:(NSString*)versionA toVersion:(NSString*)versionB;
 @end
 
 #endif

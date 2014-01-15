@@ -6,7 +6,7 @@
 
 #define TOTALTERMINAL_STANDARD_INSTALL_LOCATION "/Applications/TotalTerminal.app"
 #define TERMINAL_MIN_TESTED_VERSION @"0"
-#define TERMINAL_MAX_TESTED_VERSION @"326" // 10.8 Mountain Lion Preview 4
+#define TERMINAL_MAX_TESTED_VERSION @"326"  // 10.8 Mountain Lion Preview 4
 #define TERMINAL_UNSUPPORTED_VERSION @""
 #define TOTALTERMINAL_INJECTED_NOTIFICATION @"TotalTerminalInjectedNotification"
 
@@ -15,31 +15,32 @@ static bool alreadyLoaded = false;
 static Class gPrincipalClass = nil;
 
 // SIMBL-compatible interface
-@interface TotalTerminalPlugin: NSObject
-+(void)install;
+@interface TotalTerminalPlugin : NSObject
++ (void)install;
 @end
 
 // just a dummy class for locating our bundle
-@interface TotalTerminalInjector: NSObject @end
-@implementation TotalTerminalInjector @end
+@interface TotalTerminalInjector : NSObject
+@end
+@implementation TotalTerminalInjector
+@end
 
 static void broadcastSucessfulInjection() {
   pid_t pid = [[NSProcessInfo processInfo] processIdentifier];
 
-  [[NSDistributedNotificationCenter defaultCenter]postNotificationName:TOTALTERMINAL_INJECTED_NOTIFICATION
-                                                                object:[[NSBundle mainBundle]bundleIdentifier]
-                                                              userInfo:@{ @"pid": @(pid) }
-   ];
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:TOTALTERMINAL_INJECTED_NOTIFICATION
+                                                                 object:[[NSBundle mainBundle] bundleIdentifier]
+                                                               userInfo:@{@"pid" : @(pid)}];
 }
 
-static OSErr AEPutParamString(AppleEvent *event, AEKeyword keyword, NSString* string) {
-  UInt8 *textBuf;
+static OSErr AEPutParamString(AppleEvent* event, AEKeyword keyword, NSString* string) {
+  UInt8* textBuf;
   CFIndex length, maxBytes, actualBytes;
   length = CFStringGetLength((CFStringRef)string);
   maxBytes = CFStringGetMaximumSizeForEncoding(length, kCFStringEncodingUTF8);
   textBuf = malloc(maxBytes);
   if (textBuf) {
-    CFStringGetBytes((CFStringRef)string, CFRangeMake(0, length), kCFStringEncodingUTF8, 0, true, (UInt8 *)textBuf, maxBytes, &actualBytes);
+    CFStringGetBytes((CFStringRef)string, CFRangeMake(0, length), kCFStringEncodingUTF8, 0, true, (UInt8*)textBuf, maxBytes, &actualBytes);
     OSErr err = AEPutParamPtr(event, keyword, typeUTF8Text, textBuf, actualBytes);
     free(textBuf);
     return err;
@@ -48,12 +49,12 @@ static OSErr AEPutParamString(AppleEvent *event, AEKeyword keyword, NSString* st
   }
 }
 
-static void reportError(AppleEvent *reply, NSString* msg) {
+static void reportError(AppleEvent* reply, NSString* msg) {
   NSLog(@"TotalTerminalInjector: %@", msg);
   AEPutParamString(reply, keyErrorString, msg);
 }
 
-EXPORT OSErr handleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refcon) {
+EXPORT OSErr handleInitEvent(const AppleEvent* ev, AppleEvent* reply, long refcon) {
   @synchronized(globalLock) {
     @autoreleasepool {
       NSBundle* injectorBundle = [NSBundle bundleForClass:[TotalTerminalInjector class]];
@@ -101,7 +102,13 @@ EXPORT OSErr handleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refco
           TTStandardVersionComparator* comparator = [TTStandardVersionComparator defaultComparator];
           if (([comparator compareVersion:terminalVersion toVersion:maxVersion] == NSOrderedDescending) ||
               ([comparator compareVersion:terminalVersion toVersion:minVersion] == NSOrderedAscending)) {
-            NSLog(@"You have %@ version %@. But %@ was properly tested only with %@ versions in range %@ - %@.", targetAppName, terminalVersion, bundleName, targetAppName, minVersion, maxVersion);
+            NSLog(@"You have %@ version %@. But %@ was properly tested only with %@ versions in range %@ - %@.",
+                  targetAppName,
+                  terminalVersion,
+                  bundleName,
+                  targetAppName,
+                  minVersion,
+                  maxVersion);
           }
         }
 
@@ -128,12 +135,13 @@ EXPORT OSErr handleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refco
           NSLog(@"TotalTerminalInjector: Installing TotalTerminal ...");
           [gPrincipalClass install];
         }
-        
+
         alreadyLoaded = true;
         broadcastSucessfulInjection();
-        
+
         return noErr;
-      } @catch (NSException* exception) {
+      }
+      @catch (NSException* exception) {
         reportError(reply, [NSString stringWithFormat:@"Failed to load TotalTerminal with exception: %@", exception]);
       }
       return 1;
@@ -141,7 +149,7 @@ EXPORT OSErr handleInitEvent(const AppleEvent *ev, AppleEvent *reply, long refco
   }
 }
 
-EXPORT OSErr handleCheckEvent(const AppleEvent *ev, AppleEvent *reply, long refcon) {
+EXPORT OSErr handleCheckEvent(const AppleEvent* ev, AppleEvent* reply, long refcon) {
   @synchronized(globalLock) {
     @autoreleasepool {
       if (alreadyLoaded) {
