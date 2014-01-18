@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8D576314048677EA00EA77CD /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA1909FFE8422F4C02AAC07 /* CoreFoundation.framework */; };
 		8D5B49A804867FD3000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B49A704867FD3000E48DA /* InfoPlist.strings */; };
+		D68A3602188A0F1600A657A6 /* TotalTerminal-osax_Debug_TotalTerminal.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D68A3600188A0F1600A657A6 /* TotalTerminal-osax_Debug_TotalTerminal.xcconfig */; };
+		D68A3603188A0F1600A657A6 /* TotalTerminal-osax_Release_TotalTerminal.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D68A3601188A0F1600A657A6 /* TotalTerminal-osax_Release_TotalTerminal.xcconfig */; };
 		D6ACBEA2117B7D5600F6691C /* TotalTerminalInjector.m in Sources */ = {isa = PBXBuildFile; fileRef = D6ACBE9E117B7D5600F6691C /* TotalTerminalInjector.m */; };
 		D6ACBEA3117B7D5600F6691C /* TTStandardVersionComparator.m in Sources */ = {isa = PBXBuildFile; fileRef = D6ACBEA0117B7D5600F6691C /* TTStandardVersionComparator.m */; };
 		D6ACBEA5117B7D6100F6691C /* TotalTerminalInjector.sdef in Resources */ = {isa = PBXBuildFile; fileRef = D6ACBEA4117B7D6100F6691C /* TotalTerminalInjector.sdef */; };
@@ -18,7 +20,9 @@
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0AA1909FFE8422F4C02AAC07 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		8D576316048677EA00EA77CD /* TotalTerminal.osax */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TotalTerminal.osax; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D576317048677EA00EA77CD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D576317048677EA00EA77CD /* TotalTerminal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TotalTerminal-Info.plist"; sourceTree = "<group>"; };
+		D68A3600188A0F1600A657A6 /* TotalTerminal-osax_Debug_TotalTerminal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "TotalTerminal-osax_Debug_TotalTerminal.xcconfig"; path = "TotalTerminal-osax.xcconfigs/TotalTerminal-osax_Debug_TotalTerminal.xcconfig"; sourceTree = "<group>"; };
+		D68A3601188A0F1600A657A6 /* TotalTerminal-osax_Release_TotalTerminal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "TotalTerminal-osax_Release_TotalTerminal.xcconfig"; path = "TotalTerminal-osax.xcconfigs/TotalTerminal-osax_Release_TotalTerminal.xcconfig"; sourceTree = "<group>"; };
 		D6ACBE9E117B7D5600F6691C /* TotalTerminalInjector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalTerminalInjector.m; sourceTree = "<group>"; };
 		D6ACBE9F117B7D5600F6691C /* TTVersionComparisonProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVersionComparisonProtocol.h; sourceTree = "<group>"; };
 		D6ACBEA0117B7D5600F6691C /* TTStandardVersionComparator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStandardVersionComparator.m; sourceTree = "<group>"; };
@@ -41,6 +45,7 @@
 		089C166AFE841209C02AAC07 /* TotalTerminal-osax */ = {
 			isa = PBXGroup;
 			children = (
+				D60C69B8188A030400C0108B /* Configs */,
 				08FB77AFFE84173DC02AAC07 /* Source */,
 				089C167CFE841241C02AAC07 /* Resources */,
 				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
@@ -61,7 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				D6ACBEA4117B7D6100F6691C /* TotalTerminalInjector.sdef */,
-				8D576317048677EA00EA77CD /* Info.plist */,
+				8D576317048677EA00EA77CD /* TotalTerminal-Info.plist */,
 				8D5B49A704867FD3000E48DA /* InfoPlist.strings */,
 			);
 			name = Resources;
@@ -86,12 +91,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D60C69B8188A030400C0108B /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				D68A3600188A0F1600A657A6 /* TotalTerminal-osax_Debug_TotalTerminal.xcconfig */,
+				D68A3601188A0F1600A657A6 /* TotalTerminal-osax_Release_TotalTerminal.xcconfig */,
+			);
+			name = Configs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D57630D048677EA00EA77CD /* TotalTerminal.osax */ = {
+		8D57630D048677EA00EA77CD /* TotalTerminal */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB911A08733D790010E9CD /* Build configuration list for PBXNativeTarget "TotalTerminal.osax" */;
+			buildConfigurationList = 1DEB911A08733D790010E9CD /* Build configuration list for PBXNativeTarget "TotalTerminal" */;
 			buildPhases = (
 				8D57630F048677EA00EA77CD /* Resources */,
 				8D576311048677EA00EA77CD /* Sources */,
@@ -101,7 +115,7 @@
 			);
 			dependencies = (
 			);
-			name = TotalTerminal.osax;
+			name = TotalTerminal;
 			productInstallPath = "$(HOME)/Library/Bundles";
 			productName = "TotalTerminal-osax";
 			productReference = 8D576316048677EA00EA77CD /* TotalTerminal.osax */;
@@ -128,7 +142,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D57630D048677EA00EA77CD /* TotalTerminal.osax */,
+				8D57630D048677EA00EA77CD /* TotalTerminal */,
 			);
 		};
 /* End PBXProject section */
@@ -140,6 +154,8 @@
 			files = (
 				8D5B49A804867FD3000E48DA /* InfoPlist.strings in Resources */,
 				D6ACBEA5117B7D6100F6691C /* TotalTerminalInjector.sdef in Resources */,
+				D68A3602188A0F1600A657A6 /* TotalTerminal-osax_Debug_TotalTerminal.xcconfig in Resources */,
+				D68A3603188A0F1600A657A6 /* TotalTerminal-osax_Release_TotalTerminal.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,90 +187,34 @@
 /* Begin XCBuildConfiguration section */
 		1DEB911B08733D790010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D68A3600188A0F1600A657A6 /* TotalTerminal-osax_Debug_TotalTerminal.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				INFOPLIST_FILE = Info.plist;
-				MACOSX_DEPLOYMENT_TARGET = 10.6.8;
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PRODUCT_NAME = TotalTerminal;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VALID_ARCHS = "x86_64 i386";
-				WRAPPER_EXTENSION = osax;
 			};
 			name = Debug;
 		};
 		1DEB911C08733D790010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D68A3601188A0F1600A657A6 /* TotalTerminal-osax_Release_TotalTerminal.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				INFOPLIST_FILE = Info.plist;
-				MACOSX_DEPLOYMENT_TARGET = 10.6.8;
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PRODUCT_NAME = TotalTerminal;
-				SDKROOT = macosx;
-				VALID_ARCHS = "x86_64 i386";
-				WRAPPER_EXTENSION = osax;
 			};
 			name = Release;
 		};
 		1DEB911F08733D790010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					x86_64,
-					i386,
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = NO;
-				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Debug;
 		};
 		1DEB912008733D790010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					x86_64,
-					i386,
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB911A08733D790010E9CD /* Build configuration list for PBXNativeTarget "TotalTerminal.osax" */ = {
+		1DEB911A08733D790010E9CD /* Build configuration list for PBXNativeTarget "TotalTerminal" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB911B08733D790010E9CD /* Debug */,
