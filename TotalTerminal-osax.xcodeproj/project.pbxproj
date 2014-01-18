@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		8D576314048677EA00EA77CD /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA1909FFE8422F4C02AAC07 /* CoreFoundation.framework */; };
 		8D5B49A804867FD3000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B49A704867FD3000E48DA /* InfoPlist.strings */; };
-		D68A3602188A0F1600A657A6 /* TotalTerminal-osax_Debug_TotalTerminal.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D68A3600188A0F1600A657A6 /* TotalTerminal-osax_Debug_TotalTerminal.xcconfig */; };
-		D68A3603188A0F1600A657A6 /* TotalTerminal-osax_Release_TotalTerminal.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D68A3601188A0F1600A657A6 /* TotalTerminal-osax_Release_TotalTerminal.xcconfig */; };
 		D6ACBEA2117B7D5600F6691C /* TotalTerminalInjector.m in Sources */ = {isa = PBXBuildFile; fileRef = D6ACBE9E117B7D5600F6691C /* TotalTerminalInjector.m */; };
 		D6ACBEA3117B7D5600F6691C /* TTStandardVersionComparator.m in Sources */ = {isa = PBXBuildFile; fileRef = D6ACBEA0117B7D5600F6691C /* TTStandardVersionComparator.m */; };
 		D6ACBEA5117B7D6100F6691C /* TotalTerminalInjector.sdef in Resources */ = {isa = PBXBuildFile; fileRef = D6ACBEA4117B7D6100F6691C /* TotalTerminalInjector.sdef */; };
@@ -154,8 +152,6 @@
 			files = (
 				8D5B49A804867FD3000E48DA /* InfoPlist.strings in Resources */,
 				D6ACBEA5117B7D6100F6691C /* TotalTerminalInjector.sdef in Resources */,
-				D68A3602188A0F1600A657A6 /* TotalTerminal-osax_Debug_TotalTerminal.xcconfig in Resources */,
-				D68A3603188A0F1600A657A6 /* TotalTerminal-osax_Release_TotalTerminal.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
