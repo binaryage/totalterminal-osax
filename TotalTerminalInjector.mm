@@ -1,6 +1,6 @@
 #import "TTStandardVersionComparator.h"
 
-#define EXPORT __attribute__((visibility("default")))
+#define EXPORT extern "C" __attribute__((visibility("default")))
 
 #define TOTALTERMINAL_STANDARD_INSTALL_LOCATION "/Applications/TotalTerminal.app"
 #define TERMINAL_MIN_TESTED_VERSION @"0"
@@ -12,9 +12,17 @@ static NSString* globalLock = @"I'm the global lock to prevent concruent handler
 static bool alreadyLoaded = false;
 static Class gPrincipalClass = nil;
 
+@interface TotalTerminal : NSObject {
+}
+- (BOOL)isHidden;
+- (void)showVisor:(BOOL)fast;
+- (void)hideVisor:(BOOL)fast;
+@end
+
 // SIMBL-compatible interface
 @interface TotalTerminalPlugin : NSObject
 + (void)install;
++ (TotalTerminal*) sharedInstance;
 @end
 
 // just a dummy class for locating our bundle
@@ -36,7 +44,7 @@ static OSErr AEPutParamString(AppleEvent* event, AEKeyword keyword, NSString* st
   CFIndex length, maxBytes, actualBytes;
   length = CFStringGetLength((CFStringRef)string);
   maxBytes = CFStringGetMaximumSizeForEncoding(length, kCFStringEncodingUTF8);
-  textBuf = malloc(maxBytes);
+  textBuf = (UInt8*)malloc(maxBytes);
   if (textBuf) {
     CFStringGetBytes((CFStringRef)string, CFRangeMake(0, length), kCFStringEncodingUTF8, 0, true, (UInt8*)textBuf, maxBytes, &actualBytes);
     OSErr err = AEPutParamPtr(event, keyword, typeUTF8Text, textBuf, actualBytes);
@@ -50,6 +58,10 @@ static OSErr AEPutParamString(AppleEvent* event, AEKeyword keyword, NSString* st
 static void reportError(AppleEvent* reply, NSString* msg) {
   NSLog(@"TotalTerminalInjector: %@", msg);
   AEPutParamString(reply, keyErrorString, msg);
+}
+
+static void returnBool(AppleEvent* reply, BOOL value, AEKeyword keyword = keyDirectObject) {
+  AEPutParamDesc(reply, keyword, [[NSAppleEventDescriptor descriptorWithBoolean:value] aeDesc]);
 }
 
 EXPORT OSErr handleInitEvent(const AppleEvent* ev, AppleEvent* reply, long refcon) {
@@ -157,4 +169,53 @@ EXPORT OSErr handleCheckEvent(const AppleEvent* ev, AppleEvent* reply, long refc
       return 1;
     }
   }
+}
+
+typedef OSErr(^commandBlock)(TotalTerminal* totalTerminal);
+
+OSErr executeCommand(commandBlock command, const AppleEvent* ev, AppleEvent* reply, long refcon) {
+  @synchronized(globalLock) {
+    @autoreleasepool {
+      if (!gPrincipalClass) {
+        reportError(reply, [NSString stringWithFormat:@"TotalTerminal not present"]);
+        return 150;
+      }
+      
+      TotalTerminal* instance = [gPrincipalClass sharedInstance];
+      if (!instance) {
+        reportError(reply, [NSString stringWithFormat:@"Unable to retrieve TotalTerminal instance"]);
+        return 151;
+      }
+      
+      return command(instance);
+    }
+  }
+}
+
+EXPORT OSErr handleShowVisorEvent(const AppleEvent* ev, AppleEvent* reply, long refcon) {
+  commandBlock command = ^OSErr(TotalTerminal* totalTerminal) {
+    [totalTerminal showVisor:NO];
+    return noErr;
+  };
+  
+  return executeCommand(command, ev, reply, refcon);
+}
+
+EXPORT OSErr handleHideVisorEvent(const AppleEvent* ev, AppleEvent* reply, long refcon) {
+  commandBlock command = ^OSErr(TotalTerminal* totalTerminal) {
+    [totalTerminal hideVisor:NO];
+    return noErr;
+  };
+  
+  return executeCommand(command, ev, reply, refcon);
+}
+
+EXPORT OSErr handleVisorHiddenEvent(const AppleEvent* ev, AppleEvent* reply, long refcon) {
+  commandBlock command = ^OSErr(TotalTerminal* totalTerminal) {
+    BOOL answer = [totalTerminal isHidden];
+    returnBool(reply, answer);
+    return noErr;
+  };
+  
+  return executeCommand(command, ev, reply, refcon);
 }

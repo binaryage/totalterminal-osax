@@ -4,5 +4,8 @@
     <suite name="TotalTerminalInjector Suite" code="BATT" description="TotalTerminal Injector commands">
         <command name="init TotalTerminal" code="BATTinit" description="Install TotalTerminal.bundle into the Terminal process"/>
         <command name="check TotalTerminal" code="BATTchck" description="Check presence of TotalTerminal in Terminal process"/>
+        <command name="show visor" code="BATTvish" description="Show visor window by sliding"/>
+        <command name="hide visor" code="BATTvihd" description="Hide visor window by sliding"/>
+        <command name="visor hidden" code="BATTvih_" description="Is visor window hidden?"/>
     </suite>
 </dictionary>

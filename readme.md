@@ -41,3 +41,36 @@ Check if TotalTerminal is present in running Terminal image.
         end try
         res
     end tell
+
+## More applescript commands
+
+### Show visor window (BATTvish)
+
+    tell application "Terminal"
+        try
+            «event BATTvish»
+        on error msg number num
+            display dialog "Unable to show visor." & msg & " (" & (num as text) & ")"
+        end try
+    end tell
+
+### Hide visor window (BATTvihd)
+
+    tell application "Terminal"
+        try
+            «event BATTvihd»
+        on error msg number num
+            display dialog "Unable to show visor." & msg & " (" & (num as text) & ")"
+        end try
+    end tell
+
+### Is visor window hidden? (BATTvih_)
+
+    tell application "Terminal"
+        try
+            set res to («event BATTvih_»)
+        on error msg number num
+            display dialog "Unable to show visor." & msg & " (" & (num as text) & ")"
+        end try
+        res
+    end tell

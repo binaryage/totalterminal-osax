@@ -26,6 +26,33 @@
 	<dict>
 		<key>Events</key>
 		<dict>
+			<key>BATTvih_</key>
+			<dict>
+				<key>Context</key>
+				<string>Process</string>
+				<key>Handler</key>
+				<string>handleVisorHiddenEvent</string>
+				<key>ThreadSafe</key>
+				<false/>
+			</dict>
+			<key>BATTvish</key>
+			<dict>
+				<key>Context</key>
+				<string>Process</string>
+				<key>Handler</key>
+				<string>handleShowVisorEvent</string>
+				<key>ThreadSafe</key>
+				<false/>
+			</dict>
+			<key>BATTvihd</key>
+			<dict>
+				<key>Context</key>
+				<string>Process</string>
+				<key>Handler</key>
+				<string>handleHideVisorEvent</string>
+				<key>ThreadSafe</key>
+				<false/>
+			</dict>
 			<key>BATTchck</key>
 			<dict>
 				<key>Context</key>

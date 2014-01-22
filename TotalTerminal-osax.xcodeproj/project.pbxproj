@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		8D576314048677EA00EA77CD /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AA1909FFE8422F4C02AAC07 /* CoreFoundation.framework */; };
 		8D5B49A804867FD3000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D5B49A704867FD3000E48DA /* InfoPlist.strings */; };
-		D6ACBEA2117B7D5600F6691C /* TotalTerminalInjector.m in Sources */ = {isa = PBXBuildFile; fileRef = D6ACBE9E117B7D5600F6691C /* TotalTerminalInjector.m */; };
+		D6ACBEA2117B7D5600F6691C /* TotalTerminalInjector.mm in Sources */ = {isa = PBXBuildFile; fileRef = D6ACBE9E117B7D5600F6691C /* TotalTerminalInjector.mm */; };
 		D6ACBEA3117B7D5600F6691C /* TTStandardVersionComparator.m in Sources */ = {isa = PBXBuildFile; fileRef = D6ACBEA0117B7D5600F6691C /* TTStandardVersionComparator.m */; };
 		D6ACBEA5117B7D6100F6691C /* TotalTerminalInjector.sdef in Resources */ = {isa = PBXBuildFile; fileRef = D6ACBEA4117B7D6100F6691C /* TotalTerminalInjector.sdef */; };
 /* End PBXBuildFile section */
@@ -21,7 +21,7 @@
 		8D576317048677EA00EA77CD /* TotalTerminal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TotalTerminal-Info.plist"; sourceTree = "<group>"; };
 		D68A3600188A0F1600A657A6 /* TotalTerminal-osax_Debug_TotalTerminal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "TotalTerminal-osax_Debug_TotalTerminal.xcconfig"; path = "TotalTerminal-osax.xcconfigs/TotalTerminal-osax_Debug_TotalTerminal.xcconfig"; sourceTree = "<group>"; };
 		D68A3601188A0F1600A657A6 /* TotalTerminal-osax_Release_TotalTerminal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "TotalTerminal-osax_Release_TotalTerminal.xcconfig"; path = "TotalTerminal-osax.xcconfigs/TotalTerminal-osax_Release_TotalTerminal.xcconfig"; sourceTree = "<group>"; };
-		D6ACBE9E117B7D5600F6691C /* TotalTerminalInjector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalTerminalInjector.m; sourceTree = "<group>"; };
+		D6ACBE9E117B7D5600F6691C /* TotalTerminalInjector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TotalTerminalInjector.mm; sourceTree = "<group>"; };
 		D6ACBE9F117B7D5600F6691C /* TTVersionComparisonProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVersionComparisonProtocol.h; sourceTree = "<group>"; };
 		D6ACBEA0117B7D5600F6691C /* TTStandardVersionComparator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStandardVersionComparator.m; sourceTree = "<group>"; };
 		D6ACBEA1117B7D5600F6691C /* TTStandardVersionComparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTStandardVersionComparator.h; sourceTree = "<group>"; };
@@ -49,8 +49,10 @@
 				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
 				19C28FB6FE9D52B211CA2CBB /* Products */,
 			);
+			indentWidth = 2;
 			name = "TotalTerminal-osax";
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
@@ -73,7 +75,7 @@
 		08FB77AFFE84173DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D6ACBE9E117B7D5600F6691C /* TotalTerminalInjector.m */,
+				D6ACBE9E117B7D5600F6691C /* TotalTerminalInjector.mm */,
 				D6ACBE9F117B7D5600F6691C /* TTVersionComparisonProtocol.h */,
 				D6ACBEA0117B7D5600F6691C /* TTStandardVersionComparator.m */,
 				D6ACBEA1117B7D5600F6691C /* TTStandardVersionComparator.h */,
@@ -162,7 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6ACBEA2117B7D5600F6691C /* TotalTerminalInjector.m in Sources */,
+				D6ACBEA2117B7D5600F6691C /* TotalTerminalInjector.mm in Sources */,
 				D6ACBEA3117B7D5600F6691C /* TTStandardVersionComparator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
