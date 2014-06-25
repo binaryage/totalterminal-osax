@@ -19,8 +19,8 @@
 		0AA1909FFE8422F4C02AAC07 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		8D576316048677EA00EA77CD /* TotalTerminal.osax */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TotalTerminal.osax; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D576317048677EA00EA77CD /* TotalTerminal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TotalTerminal-Info.plist"; sourceTree = "<group>"; };
-		D68A3600188A0F1600A657A6 /* TotalTerminal-osax_Debug_TotalTerminal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "TotalTerminal-osax_Debug_TotalTerminal.xcconfig"; path = "TotalTerminal-osax.xcconfigs/TotalTerminal-osax_Debug_TotalTerminal.xcconfig"; sourceTree = "<group>"; };
-		D68A3601188A0F1600A657A6 /* TotalTerminal-osax_Release_TotalTerminal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "TotalTerminal-osax_Release_TotalTerminal.xcconfig"; path = "TotalTerminal-osax.xcconfigs/TotalTerminal-osax_Release_TotalTerminal.xcconfig"; sourceTree = "<group>"; };
+		D619108C1959C75400BA335F /* OSAX_Debug_TotalTerminal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = OSAX_Debug_TotalTerminal.xcconfig; path = OSAX.xcconfigs/OSAX_Debug_TotalTerminal.xcconfig; sourceTree = "<group>"; };
+		D619108D1959C75400BA335F /* OSAX_Release_TotalTerminal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = OSAX_Release_TotalTerminal.xcconfig; path = OSAX.xcconfigs/OSAX_Release_TotalTerminal.xcconfig; sourceTree = "<group>"; };
 		D6ACBE9E117B7D5600F6691C /* TotalTerminalInjector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TotalTerminalInjector.mm; sourceTree = "<group>"; };
 		D6ACBE9F117B7D5600F6691C /* TTVersionComparisonProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTVersionComparisonProtocol.h; sourceTree = "<group>"; };
 		D6ACBEA0117B7D5600F6691C /* TTStandardVersionComparator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTStandardVersionComparator.m; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		089C166AFE841209C02AAC07 /* TotalTerminal-osax */ = {
+		089C166AFE841209C02AAC07 /* OSAX */ = {
 			isa = PBXGroup;
 			children = (
 				D60C69B8188A030400C0108B /* Configs */,
@@ -50,7 +50,7 @@
 				19C28FB6FE9D52B211CA2CBB /* Products */,
 			);
 			indentWidth = 2;
-			name = "TotalTerminal-osax";
+			name = OSAX;
 			sourceTree = "<group>";
 			tabWidth = 2;
 		};
@@ -94,8 +94,8 @@
 		D60C69B8188A030400C0108B /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				D68A3600188A0F1600A657A6 /* TotalTerminal-osax_Debug_TotalTerminal.xcconfig */,
-				D68A3601188A0F1600A657A6 /* TotalTerminal-osax_Release_TotalTerminal.xcconfig */,
+				D619108C1959C75400BA335F /* OSAX_Debug_TotalTerminal.xcconfig */,
+				D619108D1959C75400BA335F /* OSAX_Release_TotalTerminal.xcconfig */,
 			);
 			name = Configs;
 			sourceTree = "<group>";
@@ -117,7 +117,7 @@
 			);
 			name = TotalTerminal;
 			productInstallPath = "$(HOME)/Library/Bundles";
-			productName = "TotalTerminal-osax";
+			productName = OSAX;
 			productReference = 8D576316048677EA00EA77CD /* TotalTerminal.osax */;
 			productType = "com.apple.product-type.bundle";
 		};
@@ -128,17 +128,17 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = BinaryAge;
 			};
-			buildConfigurationList = 1DEB911E08733D790010E9CD /* Build configuration list for PBXProject "TotalTerminal-osax" */;
+			buildConfigurationList = 1DEB911E08733D790010E9CD /* Build configuration list for PBXProject "OSAX" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 089C166AFE841209C02AAC07 /* TotalTerminal-osax */;
+			mainGroup = 089C166AFE841209C02AAC07 /* OSAX */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -185,14 +185,14 @@
 /* Begin XCBuildConfiguration section */
 		1DEB911B08733D790010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D68A3600188A0F1600A657A6 /* TotalTerminal-osax_Debug_TotalTerminal.xcconfig */;
+			baseConfigurationReference = D619108C1959C75400BA335F /* OSAX_Debug_TotalTerminal.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
 		};
 		1DEB911C08733D790010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D68A3601188A0F1600A657A6 /* TotalTerminal-osax_Release_TotalTerminal.xcconfig */;
+			baseConfigurationReference = D619108D1959C75400BA335F /* OSAX_Release_TotalTerminal.xcconfig */;
 			buildSettings = {
 			};
 			name = Release;
@@ -221,7 +221,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1DEB911E08733D790010E9CD /* Build configuration list for PBXProject "TotalTerminal-osax" */ = {
+		1DEB911E08733D790010E9CD /* Build configuration list for PBXProject "OSAX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB911F08733D790010E9CD /* Debug */,
