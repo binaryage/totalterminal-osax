@@ -64,6 +64,36 @@ static void returnBool(AppleEvent* reply, BOOL value, AEKeyword keyword = keyDir
   AEPutParamDesc(reply, keyword, [[NSAppleEventDescriptor descriptorWithBoolean:value] aeDesc]);
 }
 
+// this is just a sanity checking to catch missing methods early
+static int performSelfCheck() {
+  if (!gPrincipalClass) {
+    return 1;
+  }
+  
+  if (![gPrincipalClass respondsToSelector:@selector(sharedInstance)]) {
+    return 2;
+  }
+  
+  TotalTerminal* instance = [gPrincipalClass sharedInstance];
+  if (!instance) {
+    return 3;
+  }
+  
+  if (![instance respondsToSelector:@selector(isHidden)]) {
+    return 4;
+  }
+
+  if (![instance respondsToSelector:@selector(showVisor:)]) {
+    return 5;
+  }
+
+  if (![instance respondsToSelector:@selector(hideVisor:)]) {
+    return 6;
+  }
+ 
+  return 0;
+}
+
 EXPORT OSErr handleInitEvent(const AppleEvent* ev, AppleEvent* reply, long refcon) {
   @synchronized(globalLock) {
     @autoreleasepool {
@@ -141,9 +171,19 @@ EXPORT OSErr handleInitEvent(const AppleEvent* ev, AppleEvent* reply, long refco
           reportError(reply, [NSString stringWithFormat:@"Unable to retrieve principalClass for bundle: %@", pluginBundle]);
           return 3;
         }
-        if ([gPrincipalClass respondsToSelector:@selector(install)]) {
-          NSLog(@"TotalTerminalInjector: Installing TotalTerminal ...");
-          [gPrincipalClass install];
+        
+        if (![gPrincipalClass respondsToSelector:@selector(install)]) {
+          reportError(reply, [NSString stringWithFormat:@"TotalTerminal's principal class does not implement 'install' method!"]);
+          return 7;
+        }
+
+        NSLog(@"TotalTerminalInjector: Installing TotalTerminal ...");
+        [gPrincipalClass install];
+        
+        int selfCheckCode = performSelfCheck();
+        if (selfCheckCode) {
+          reportError(reply, [NSString stringWithFormat:@"Self-check failed with code %d", selfCheckCode]);
+          return 10;
         }
 
         alreadyLoaded = true;
