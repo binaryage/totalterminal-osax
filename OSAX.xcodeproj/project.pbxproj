@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0AA1909FFE8422F4C02AAC07 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
-		8D576316048677EA00EA77CD /* TotalTerminal.osax */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TotalTerminal.osax; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D576316048677EA00EA77CD /* TotalTerminal.xaso */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TotalTerminal.xaso; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D576317048677EA00EA77CD /* TotalTerminal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TotalTerminal-Info.plist"; sourceTree = "<group>"; };
 		D619108C1959C75400BA335F /* OSAX_Debug_TotalTerminal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = OSAX_Debug_TotalTerminal.xcconfig; path = OSAX.xcconfigs/OSAX_Debug_TotalTerminal.xcconfig; sourceTree = "<group>"; };
 		D619108D1959C75400BA335F /* OSAX_Release_TotalTerminal.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = OSAX_Release_TotalTerminal.xcconfig; path = OSAX.xcconfigs/OSAX_Release_TotalTerminal.xcconfig; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 		19C28FB6FE9D52B211CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D576316048677EA00EA77CD /* TotalTerminal.osax */,
+				8D576316048677EA00EA77CD /* TotalTerminal.xaso */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,7 +118,7 @@
 			name = TotalTerminal;
 			productInstallPath = "$(HOME)/Library/Bundles";
 			productName = OSAX;
-			productReference = 8D576316048677EA00EA77CD /* TotalTerminal.osax */;
+			productReference = 8D576316048677EA00EA77CD /* TotalTerminal.xaso */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -187,6 +187,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D619108C1959C75400BA335F /* OSAX_Debug_TotalTerminal.xcconfig */;
 			buildSettings = {
+				WRAPPER_EXTENSION = xaso;
 			};
 			name = Debug;
 		};
@@ -194,6 +195,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D619108D1959C75400BA335F /* OSAX_Release_TotalTerminal.xcconfig */;
 			buildSettings = {
+				WRAPPER_EXTENSION = xaso;
 			};
 			name = Release;
 		};
