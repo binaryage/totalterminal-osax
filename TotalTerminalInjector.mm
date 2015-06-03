@@ -4,7 +4,7 @@
 
 #define TOTALTERMINAL_STANDARD_INSTALL_LOCATION "/Applications/TotalTerminal.app"
 #define TERMINAL_MIN_TESTED_VERSION @"0"
-#define TERMINAL_MAX_TESTED_VERSION @"339"  // 10.10 Yosemite DP5
+#define TERMINAL_MAX_TESTED_VERSION @"343.7"  // 10.10.4 (14E26a)
 #define TERMINAL_UNSUPPORTED_VERSION @""
 #define TOTALTERMINAL_INJECTED_NOTIFICATION @"TotalTerminalInjectedNotification"
 #define TOTALTERMINAL_FAILED_INJECTION_NOTIFICATION @"TotalTerminalFailedInjectionNotification"
