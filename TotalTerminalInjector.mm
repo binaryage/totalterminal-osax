@@ -7,6 +7,7 @@
 #define TERMINAL_MAX_TESTED_VERSION @"339"  // 10.10 Yosemite DP5
 #define TERMINAL_UNSUPPORTED_VERSION @""
 #define TOTALTERMINAL_INJECTED_NOTIFICATION @"TotalTerminalInjectedNotification"
+#define TOTALTERMINAL_FAILED_INJECTION_NOTIFICATION @"TotalTerminalFailedInjectionNotification"
 
 static NSString* globalLock = @"I'm the global lock to prevent concruent handler executions";
 static bool alreadyLoaded = false;
@@ -31,13 +32,18 @@ static Class gPrincipalClass = nil;
 @implementation TotalTerminalInjector
 @end
 
-static void broadcastSucessfulInjection() {
+static void broadcastNotification(NSString* notification) {
   pid_t pid = [[NSProcessInfo processInfo] processIdentifier];
 
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:TOTALTERMINAL_INJECTED_NOTIFICATION
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:notification
                                                                  object:[[NSBundle mainBundle] bundleIdentifier]
-                                                               userInfo:@{@"pid" : @(pid)}];
+                                                               userInfo:@{@"pid" : @(pid)}
+                                                     deliverImmediately:YES];
 }
+
+static void broadcastSucessfulInjection() { broadcastNotification(TOTALTERMINAL_INJECTED_NOTIFICATION); }
+
+static void broadcastUnsucessfulInjection() { broadcastNotification(TOTALTERMINAL_FAILED_INJECTION_NOTIFICATION); }
 
 static OSErr AEPutParamString(AppleEvent* event, AEKeyword keyword, NSString* string) {
   UInt8* textBuf;
@@ -153,16 +159,17 @@ EXPORT OSErr handleInitEvent(const AppleEvent* ev, AppleEvent* reply, long refco
         }
 
         NSBundle* totalTerminalInjectorBundle = [NSBundle bundleForClass:[TotalTerminalInjector class]];
-        NSString* totalTerminalLocation = [totalTerminalInjectorBundle pathForResource:@"TotalTerminal" ofType:@"bundle"];
+        NSString* totalTerminalLocation = [totalTerminalInjectorBundle pathForResource:bundleName ofType:@"bundle"];
         NSBundle* pluginBundle = [NSBundle bundleWithPath:totalTerminalLocation];
         if (!pluginBundle) {
           reportError(reply, [NSString stringWithFormat:@"Unable to create bundle from path: %@ [%@]", totalTerminalLocation, totalTerminalInjectorBundle]);
           return 2;
         }
 
+        NSLog(@"TotalTerminalInjector: Installing %@ from %@", bundleName, totalTerminalLocation);
         NSError* error;
         if (![pluginBundle loadAndReturnError:&error]) {
-          reportError(reply, [NSString stringWithFormat:@"Unable to load bundle from path: %@ error: %@", totalTerminalLocation, [error localizedDescription]]);
+          reportError(reply, [NSString stringWithFormat:@"Unable to load bundle from path: %@ error: %@ [code=%ld]", totalTerminalLocation, [error localizedDescription], (long)[error code]]);
           return 6;
         }
 
@@ -177,7 +184,6 @@ EXPORT OSErr handleInitEvent(const AppleEvent* ev, AppleEvent* reply, long refco
           return 7;
         }
 
-        NSLog(@"TotalTerminalInjector: Installing TotalTerminal ...");
         [gPrincipalClass install];
         
         int selfCheckCode = performSelfCheck();
@@ -192,7 +198,8 @@ EXPORT OSErr handleInitEvent(const AppleEvent* ev, AppleEvent* reply, long refco
         return noErr;
       }
       @catch (NSException* exception) {
-        reportError(reply, [NSString stringWithFormat:@"Failed to load TotalTerminal with exception: %@", exception]);
+        reportError(reply, [NSString stringWithFormat:@"Failed to load %@ with exception: %@", bundleName, exception]);
+        broadcastUnsucessfulInjection();  // stops subsequent attempts
       }
       return 1;
     }
