@@ -138,7 +138,7 @@ EXPORT OSErr handleInitEvent(const AppleEvent* ev, AppleEvent* reply, long refco
         if (([TERMINAL_UNSUPPORTED_VERSION length] > 0) && ([terminalVersion rangeOfString:TERMINAL_UNSUPPORTED_VERSION].length > 0)) {
           NSUserNotification* notification = [[NSUserNotification alloc] init];
           notification.title = [NSString stringWithFormat:@"TotalTerminal hasn't been tested with Terminal version %@", terminalVersion];
-          notification.informativeText = [NSString stringWithFormat:@"Please visit http://totalterminal.binaryage.com for more info on our progress."];
+          notification.informativeText = [NSString stringWithFormat:@"Please visit https://totalterminal.binaryage.com for more info on our progress."];
           [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
         }
 
